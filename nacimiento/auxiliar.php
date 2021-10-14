@@ -15,12 +15,13 @@
   function calculaEdad():?int
   {
     if(isset($_GET["fechanacimiento"])){
-        $datos = $_GET["fechanacimiento"];
+        /* $datos = $_GET["fechanacimiento"];
         $dtentrada = new DateTime($datos);
         $fechaactual = new DateTime(date("Y-m-d"));  
         $interval = $dtentrada->diff($fechaactual);
         $x = $interval->y;
-        return $x;
+        return $x; */
+        return (new Datetime())->diff(new DateTime($_GET["fechanacimiento"]))->y;
     }else{ return null;}
     
   }
