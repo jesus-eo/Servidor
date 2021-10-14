@@ -13,12 +13,13 @@
 </head>
 <body>
     <?php require("auxiliar.php") ?>
+    <?php $y=calculaEdad();?>
     <form action="" method="get">
         <table>
             <tr>
                 <td>
                     <label for="nombre">Nombre:</label>
-                    <input type="text" name="nombre" id="nombre">
+                    <input type="text" name="nombre" id="nombre" placeholder=<?= $y ?>>
                 </td>
             </tr>
             <tr>
@@ -35,11 +36,18 @@
             </tr>
             <tr>
                 <td>
-                    <button type="submit">Enviar</button>
+                    <button type="submit" name="boton">Enviar</button>
                 </td>
             </tr>
         </table>
     </form>
-    <p><?php ?></p> 
+    <?php if(isset($_GET["boton"])):?>
+    <?php $nombre = depurarTexto($_GET["nombre"]); $apellido = depurarTexto($_GET["apellido"]); ?>
+        <p><?= $nombre ." " . $apellido; ?></p>
+        <p>Tu edad actual es: <?= $y ?></p> 
+       
+    <?php endif; ?>
+   
+    
 </body>
 </html>
